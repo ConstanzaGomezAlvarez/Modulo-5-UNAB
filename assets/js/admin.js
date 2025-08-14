@@ -100,7 +100,7 @@ document.getElementById('formEditar').addEventListener('submit', e => {
   bootstrap.Modal.getInstance(document.getElementById('modalEditar')).hide();
 });
 
-// 🗑️ Eliminar producto
+//  Eliminar producto
 window.eliminarProducto = index => {
   if (confirm('¿Seguro que deseas eliminar el producto?')) {
     catalogo.splice(index, 1);
