@@ -1,7 +1,9 @@
 [
     {
         "title": "Gabinete Crystal Black RGB E-ATX Vidrio Templado USB 3.0",
-    "categoria": ["Gabinetes"],
+        "categoria": [
+            "Gabinetes"
+        ],
         "brand": "Crystal Black",
         "code": "001",
         "description": "Diseño elegante con panel lateral de vidrio templado, excelente flujo de aire y espacio optimizado para configuraciones de alto rendimiento.",
@@ -11,7 +13,10 @@
     },
     {
         "title": "Audífonos Dual Blade 7.1 USB RGB",
-        "categoria": ["Audio", "Accesorios"],
+        "categoria": [
+            "Audio",
+            "Accesorios"
+        ],
         "brand": "Dual Blade",
         "code": "002",
         "description": "Sonido envolvente, micrófono con cancelación de ruido y diseño ergonómico para largas sesiones de juego con máxima inmersión.",
@@ -21,7 +26,9 @@
     },
     {
         "title": "Teclado Gamer TKL Kronos RGB Mecánico",
-    "categoria": ["Accesorios"],
+        "categoria": [
+            "Accesorios"
+        ],
         "brand": "Kronos Gaming",
         "code": "003",
         "description": "Formato compacto sin pad numérico, retroiluminación RGB y switches mecánicos para precisión y velocidad en cada partida.",
@@ -31,7 +38,9 @@
     },
     {
         "title": "Silla Gamer Argo 180°",
-    "categoria": ["Mobiliario"],
+        "categoria": [
+            "Mobiliario"
+        ],
         "brand": "Argo",
         "code": "004",
         "description": "Elección perfecta para gamers, streamers y profesionales que buscan ergonomía y estilo. Con materiales premium y ajustes avanzados, esta silla te brindará soporte durante largas horas de uso.",
@@ -41,7 +50,9 @@
     },
     {
         "title": "Escritorio Mesa Gamer Griffin",
-    "categoria": ["Mobiliario"],
+        "categoria": [
+            "Mobiliario"
+        ],
         "brand": "Griffin",
         "code": "005",
         "description": "Está diseñado para gamers y profesionales que exigen resistencia, espacio inteligente y un estilo agresivo. Con un tablero de 120cm x 60cm y 75cm de altura, ofrece el equilibrio perfecto entre amplitud y ergonomía.",
@@ -51,7 +62,10 @@
     },
     {
         "title": "Micrófono Profesional Mistral",
-        "categoria": ["Audio", "Accesorios"],
+        "categoria": [
+            "Audio",
+            "Accesorios"
+        ],
         "brand": "Mistral",
         "code": "006",
         "description": "Captura de voz nítida con condensador de alta sensibilidad, iluminación RGB personalizable y diseño ideal para streaming, podcasting o gaming.",

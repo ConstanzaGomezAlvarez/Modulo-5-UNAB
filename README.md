@@ -53,9 +53,9 @@ Modulo-5-UNAB-M5AE1-ABPRO2/
 
 1. Clona el repositorio:
 	```bash
-	git clone https://github.com/fhidalgoq/EvaFinalM4.git
+	git clone https://github.com/ConstanzaGomezAlvarez/Modulo-5-UNAB/tree/M5AE1-ABPRO2
 	```
-2. Abre la carpeta `EvaFinalM4`.
+2. Abre la carpeta `M5AE1-ABPRO2`.
 3. Abre `index.html` en tu navegador.
 
 ## Contribuidores

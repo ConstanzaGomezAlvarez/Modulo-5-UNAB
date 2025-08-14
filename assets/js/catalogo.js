@@ -29,8 +29,15 @@ const cartSummary = document.getElementById('cart-summary');
 // ==================== Cargar productos ====================
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const res = await fetch('productos.json');
-    const data = await res.json();
+    // Primero intenta cargar desde localStorage
+    const localData = localStorage.getItem('catalogo');
+    let data;
+    if (localData) {
+      data = JSON.parse(localData);
+    } else {
+      const res = await fetch('productos.json');
+      data = await res.json();
+    }
     catalogo = data.map(p => new Producto(p));
     renderFilters();
     renderProducts(catalogo);
@@ -54,7 +61,7 @@ function renderFilters() {
   sel.innerHTML = cats.map(c => `<option value="${c}">${c}</option>`).join('');
 
   // Precio máximo dinámico
-  const maxPrice = catalogo.length ? Math.max(...catalogo.map(p => p.price)) : 0;
+  const maxPrice = catalogo.length ? Math.max(...catalogo.map(p => p.price)) + 100000 : 0;
   range.max = String(maxPrice);
   range.value = String(maxPrice);
   priceValue.textContent = `$${Number(range.value).toLocaleString()}`;
