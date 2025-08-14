@@ -1,6 +1,4 @@
-# EvaFinalM4
-
-Proyecto final del Módulo 4 del curso Front End Trainee.
+# ABPRO2
 
 ## Tecnologías utilizadas
 
@@ -14,7 +12,11 @@ Este proyecto está desarrollado con los siguientes lenguajes y tecnologías:
 
 - Visualización de un catálogo de productos con imágenes y descripciones.
 - Navegación entre la página principal y el catálogo.
-- Filtros y búsqueda de productos (si está implementado en el JS).
+- Filtros dinámicos por categoría, precio máximo y búsqueda de texto libre.
+- Carrito de compras con agregar, actualizar cantidad, eliminar y vaciar.
+- Cálculo automático de totales, IVA y despacho según condiciones.
+- Boleta electrónica que muestra detalle de productos y datos de despacho.
+- Persistencia del carrito usando localStorage para mantener los productos al recargar la página.
 - Diseño responsivo para adaptarse a distintos dispositivos.
 - Uso de recursos gráficos e íconos personalizados.
 
@@ -24,16 +26,35 @@ Este proyecto es una aplicación web que muestra un catálogo de productos, perm
 
 ## Estructura
 
-- `index.html`: Página principal.
-- `catalogo.html`: Catálogo de productos.
-- `css/`: Archivos de estilos.
-- `js/`: Scripts JavaScript.
-- `img/`: Imágenes de productos.
-- `assets/`: Recursos adicionales.
+Modulo-5-UNAB-M5AE1-ABPRO2/
+├─ README.md
+├─ index.html
+├─ catalogo.html
+├─ productos.json
+├─ assets/
+│   ├─ css/
+│   │   ├─ style.css
+│   │   └─ stylesconbootstrap.css
+│   ├─ favicon.ico
+│   ├─ img/
+│   │   ├─ 001.png
+│   │   ├─ 002.png
+│   │   ├─ 003.png
+│   │   ├─ 004.webp
+│   │   ├─ 005.webp
+│   │   ├─ 006.jpg
+│   │   ├─ carrusel001.png
+│   │   ├─ carrusel002.png
+│   │   └─ carrusel003.png
+│   └─ js/
+│       ├─ catalogo.js
+│       └─ index.js
+
 
 ## Requisitos
 
 - Navegador web moderno (Chrome, Firefox, Edge, etc.)
+- Conexión local para leer productos.json o servidor local (ej. Live Server en VS Code).
 
 ## Instalación
 
