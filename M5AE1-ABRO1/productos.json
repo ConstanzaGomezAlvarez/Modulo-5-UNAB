@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Gabinete Crystal Black RGB E-ATX Vidrio Templado USB 3.0",
+        "brand": "Crystal Black",
+        "code": "001",
+        "description": "Diseño elegante con panel lateral de vidrio templado, excelente flujo de aire y espacio optimizado para configuraciones de alto rendimiento.",
+        "image": "img/001.png",
+        "price": 49990,
+        "stock": 30
+    },
+    {
+        "title": "Audífonos Dual Blade 7.1 USB RGB",
+        "brand": "Dual Blade",
+        "code": "002",
+        "description": "Sonido envolvente, micrófono con cancelación de ruido y diseño ergonómico para largas sesiones de juego con máxima inmersión.",
+        "image": "img/002.png",
+        "price": 29990,
+        "stock": 3
+    },
+    {
+        "title": "Teclado Gamer TKL Kronos RGB Mecánico",
+        "brand": "Kronos Gaming",
+        "code": "003",
+        "description": "Formato compacto sin pad numérico, retroiluminación RGB y switches mecánicos para precisión y velocidad en cada partida.",
+        "image": "img/003.png",
+        "price": 19990,
+        "stock": 4
+    },
+    {
+        "title": "Silla Gamer Argo 180°",
+        "brand": "Argo",
+        "code": "004",
+        "description": "Elección perfecta para gamers, streamers y profesionales que buscan ergonomía y estilo. Con materiales premium y ajustes avanzados, esta silla te brindará soporte durante largas horas de uso.",
+        "image": "img/004.webp",
+        "price": 129990,
+        "stock": 0
+    },
+    {
+        "title": "Escritorio Mesa Gamer Griffin",
+        "brand": "Griffin",
+        "code": "005",
+        "description": "Está diseñado para gamers y profesionales que exigen resistencia, espacio inteligente y un estilo agresivo. Con un tablero de 120cm x 60cm y 75cm de altura, ofrece el equilibrio perfecto entre amplitud y ergonomía.",
+        "image": "img/005.webp",
+        "price": 69990,
+        "stock": 1
+    },
+    {
+        "title": "Micrófono Profesional Mistral",
+        "brand": "Mistral",
+        "code": "006",
+        "description": "Captura de voz nítida con condensador de alta sensibilidad, iluminación RGB personalizable y diseño ideal para streaming, podcasting o gaming.",
+        "image": "img/006.jpg",
+        "price": 39990,
+        "stock": 45
+    }
+]
