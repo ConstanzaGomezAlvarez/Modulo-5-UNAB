@@ -267,3 +267,4 @@ function calculateTotals() {
     <p><strong>Valor Total:</strong> $${total.toLocaleString()}.-</p>
   `;
 }
+
