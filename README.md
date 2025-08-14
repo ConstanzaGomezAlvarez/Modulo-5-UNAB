@@ -27,28 +27,21 @@ Este proyecto es una aplicación web que muestra un catálogo de productos, perm
 ## Estructura
 
 Modulo-5-UNAB-M5AE1-ABPRO2/
-├─ README.md
-├─ index.html
-├─ catalogo.html
-├─ productos.json
-├─ assets/
-│   ├─ css/
-│   │   ├─ style.css
-│   │   └─ stylesconbootstrap.css
-│   ├─ favicon.ico
-│   ├─ img/
-│   │   ├─ 001.png
-│   │   ├─ 002.png
-│   │   ├─ 003.png
-│   │   ├─ 004.webp
-│   │   ├─ 005.webp
-│   │   ├─ 006.jpg
-│   │   ├─ carrusel001.png
-│   │   ├─ carrusel002.png
-│   │   └─ carrusel003.png
-│   └─ js/
-│       ├─ catalogo.js
-│       └─ index.js
+-├─ README.md
+-├─ index.html
+-├─ catalogo.html
+-├─ admin.html
+-├─ productos.json
+-├─ assets/
+-│   ├─ css/
+-│   │   ├─ style.css
+-│   │   └─ stylesconbootstrap.css
+-│   ├─ favicon.ico
+-│   ├─ img/
+-│   └─ js/
+-│       ├─ admin.js
+-│       ├─ catalogo.js
+-│       └─ index.js
 
 
 ## Requisitos
@@ -67,7 +60,7 @@ Modulo-5-UNAB-M5AE1-ABPRO2/
 
 ## Contribuidores
 
-Francisco Hidalgo
-Constanza Gómez
-Fabián Jeldes
-Javiera Ampuero
+- Francisco Hidalgo
+- Constanza Gómez
+- Fabián Jeldes
+- Javiera Ampuero
