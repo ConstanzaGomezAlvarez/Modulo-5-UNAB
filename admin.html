@@ -62,18 +62,6 @@
                     <input type="text" class="form-control" id="nuevoNombre" placeholder="Nombre" required>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="nuevoMarca" placeholder="Marca" required>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="nuevoCodigo" placeholder="Código" required>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="nuevoImagen" placeholder="URL Imagen" required>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="nuevoDescripcion" placeholder="Descripción" required>
-                </div>
-                <div class="col-md-6 col-lg-4">
                     <input type="number" class="form-control" id="nuevoPrecio" placeholder="Precio" required>
                 </div>
                 <div class="col-md-6 col-lg-4">
@@ -82,77 +70,77 @@
                 <div class="col-md-6 col-lg-4">
                     <input type="number" class="form-control" id="nuevoCantidad" placeholder="Cantidad" required>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                    <input type="text" class="form-control" id="nuevoDescripcion" placeholder="Descripción" required>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <input type="text" class="form-control" id="nuevoImagen" placeholder="URL Imagen" required>
+                </div>
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-success px-4">Agregar</button>
                 </div>
             </div>
         </form>
-        <table class="table table-striped" id="tabla-inventario">
+        <div id="admin-product-list"></div>
+        <table id="tabla-inventario" class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Código</th>
-                    <th>Imagen</th>
-                    <th>Descripción</th>
                     <th>Precio</th>
                     <th>Categoría</th>
-                    <th>Cantidad</th>
+                    <th>Stock</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- JS generará los productos aquí -->
+                <!-- Aquí se insertarán los productos -->
             </tbody>
         </table>
     </div>
     <!-- Modal de edición -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEditarProducto" tabindex="-1" aria-labelledby="modalEditarProductoLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <form class="modal-content" id="formEditarProducto">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditarLabel">Editar Producto</h5>
+                    <h5 class="modal-title" id="modalEditarProductoLabel">Editar Producto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formEditar">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="editNombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Marca</label>
-                            <input type="text" class="form-control" id="editMarca" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Código</label>
-                            <input type="text" class="form-control" id="editCodigo" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Imagen (URL)</label>
-                            <input type="text" class="form-control" id="editImagen" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <textarea class="form-control" id="editDescripcion" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Precio</label>
-                            <input type="number" class="form-control" id="editPrecio" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Categoría</label>
-                            <input type="text" class="form-control" id="editCategoria" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Cantidad</label>
-                            <input type="number" class="form-control" id="editCantidad" required>
-                        </div>
-                        <input type="hidden" id="editIndex">
-                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                    </form>
+                    <input type="hidden" id="edit-id">
+                    <div class="mb-2">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="edit-nombre" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="edit-precio" min="0" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Categoría</label>
+                        <input type="text" class="form-control" id="edit-categoria" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="edit-stock" min="0" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Imagen (URL)</label>
+                        <input type="text" class="form-control" id="edit-imagen">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" id="edit-description"></textarea>
+                    </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </form>
         </div>
     </div>
     <script src="assets/js/index.js"></script>

@@ -1,21 +1,20 @@
 // ==================== Clase Producto ES6 ====================
 class Producto {
-  constructor({ title, brand, code, description, image, price, stock, quantity = 0, categoria, tags = [] }) {
-    this.title = title;
-    this.brand = brand;
-    this.code = code;
+  constructor({ id, nombre, description, precio, categoria, stock, imagen, tags, quantity }) {
+    this.id = id;
+    this.nombre = nombre;
+    this.imagen = imagen;
     this.description = description;
-    this.image = image;
-    this.price = Number(price);
+    this.precio = Number(precio);
     this.stock = Number(stock);
     this.quantity = Number(quantity) || 0;
-    this.categoria = Array.isArray(categoria) ? categoria : [categoria || "Sin categoría"];
+    this.categoria = Array.isArray(categoria) ? categoria : String(categoria || "").split(",").map(t => t.trim()).filter(Boolean);
     this.tags = Array.isArray(tags) ? tags : String(tags || "").split(",").map(t => t.trim()).filter(Boolean);
   }
   stockCritico() { return this.stock < 5 && this.stock > 1; }
   ultimaUnidad() { return this.stock === 1; }
   estaAgotado() { return this.stock === 0; }
-  getTotal() { return this.price * this.quantity; }
+  getTotal() { return this.precio * this.quantity; }
   copiar() { return new Producto({ ...this }); }
 }
 
@@ -29,15 +28,9 @@ const cartSummary = document.getElementById('cart-summary');
 // ==================== Cargar productos ====================
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Primero intenta cargar desde localStorage
-    const localData = localStorage.getItem('catalogo');
-    let data;
-    if (localData) {
-      data = JSON.parse(localData);
-    } else {
-      const res = await fetch('productos.json');
-      data = await res.json();
-    }
+    const res = await fetch('http://localhost:3000/api/productos');
+    const data = await res.json();
+    console.log("Productos cargados:", data);
     catalogo = data.map(p => new Producto(p));
     renderFilters();
     renderProducts(catalogo);
@@ -61,7 +54,7 @@ function renderFilters() {
   sel.innerHTML = cats.map(c => `<option value="${c}">${c}</option>`).join('');
 
   // Precio máximo dinámico
-  const maxPrice = catalogo.length ? Math.max(...catalogo.map(p => p.price)) + 100000 : 0;
+  const maxPrice = catalogo.length ? Math.max(...catalogo.map(p => p.precio)) + 100000 : 0;
   range.max = String(maxPrice);
   range.value = String(maxPrice);
   priceValue.textContent = `$${Number(range.value).toLocaleString()}`;
@@ -85,9 +78,9 @@ function applyFilters() {
 
   const filtered = catalogo.filter(p => {
     const byCategory = category === 'Todas' || (p.categoria || ["Sin categoría"]).includes(category);
-    const byPrice = Number(p.price) <= maxPrice;
+    const byPrice = Number(p.precio) <= maxPrice;
     const haystack = [
-      p.title, p.description,
+      p.nombre, p.description,
       ...(Array.isArray(p.categoria) ? p.categoria : [p.categoria]),
       ...(Array.isArray(p.tags) ? p.tags : [])
     ].filter(Boolean).map(s => String(s).toLowerCase());
@@ -115,14 +108,12 @@ function renderProducts(lista) {
     card.className = 'col';
     card.innerHTML = `
       <div class="card h-100">
-        <img src="${product.image || 'https://via.placeholder.com/600x400?text=Producto'}" class="card-img-top" alt="${product.title}">
+        <img src="${product.imagen || 'https://via.placeholder.com/600x400?text=Producto'}" class="card-img-top" alt="${product.nombre}">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${product.title}</h5>
+          <h5 class="card-title">${product.nombre}</h5>
           <div class="mb-2">
             ${(product.categoria || ['Sin categoría']).map(c => `<span class="badge bg-primary">${c}</span>`).join(' ')}
           </div>
-          <h6 class="card-subtitle mb-2 text-muted">${product.brand || ''}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Código: #${product.code}</h6>
           <p class="card-text">${product.description || ''}</p>
           ${agotado ? '<p class="text-danger mt-auto"><strong>Agotado</strong></p>' : ''}
           ${ultimaUnidad ? '<p class="card-text text-warning mt-auto"><strong>¡Solo una unidad restante!</strong></p>' : ''}
@@ -133,7 +124,7 @@ function renderProducts(lista) {
           </div>
         </div>
         <div class="card-footer bg-transparent border-0">
-          <h4 class="card-subtitle mb-2">Precio: $${Number(product.price).toLocaleString()}</h4>
+          <h4 class="card-subtitle mb-2">Precio: $${Number(product.precio).toLocaleString()}</h4>
           <input type="number" id="qty-${i}" class="form-control mb-2" placeholder="Cantidad" min="1" max="${product.stock}" ${agotado ? 'disabled' : ''}>
           <input type="checkbox" class="btn-check" id="chk-${i}" autocomplete="off" ${agotado ? 'disabled' : ''}>
           <label class="btn btn-outline-primary mb-2" for="chk-${i}">${agotado ? 'Sin stock' : 'Agregar al carrito'}</label>
@@ -161,7 +152,7 @@ function addToCart(index) {
     return;
   }
 
-  const existing = cart.find(p => p.code === product.code);
+  const existing = cart.find(p => p.id === product.id);
   if (existing) {
     if (existing.quantity + quantity > product.stock) {
       alert('No puedes agregar más de lo disponible en stock.');
@@ -242,9 +233,9 @@ function renderCart() {
   cart.forEach((product, i) => {
     tableHtml += `
       <tr>
-        <td>${product.title}</td>
+        <td>${product.nombre}</td>
         <td><input type="number" min="0" max="${product.stock}" value="${product.quantity}" onchange="updateCartQuantity(${i}, this.value)" class="form-control" style="width:80px"></td>
-        <td>$${Number(product.price).toLocaleString()}</td>
+        <td>$${Number(product.precio).toLocaleString()}</td>
         <td>$${product.getTotal().toLocaleString()}</td>
         <td><button class="btn btn-danger btn-sm" onclick="removeFromCart(${i})">Eliminar</button></td>
       </tr>
@@ -254,6 +245,7 @@ function renderCart() {
   tableHtml += `</tbody></table>
   <div class="text-end mt-3">
     <button class="btn btn-danger" onclick="clearCart()">Vaciar carrito</button>
+    <button class="btn btn-success ms-2" onclick="mostrarFormularioCorreo()">Confirmar compra</button>
   </div>`;
 
   cartItems.innerHTML = tableHtml;
@@ -273,5 +265,85 @@ function calculateTotals() {
     ${despacho > 0 ? `<p><strong>Despacho:</strong> $${despacho.toLocaleString()}.-</p>` : ''}
     <p><strong>Valor Total:</strong> $${total.toLocaleString()}.-</p>
   `;
+}
+
+// ==================== Formulario de Correo ====================
+function mostrarFormularioCorreo() {
+  const container = document.getElementById('formulario-correo-container');
+  container.innerHTML = `
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2 class="card-title"><b>Datos para el despacho y confirmación por correo</b></h2>
+        <form id="form-correo">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input class="form-control" type="text" name="nombre" placeholder="Nombre quien recibe" required />
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="email" name="email" placeholder="Correo electrónico" required />
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" name="direccion" placeholder="Dirección" required />
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="region" placeholder="Región" required />
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control" name="mensaje" rows="3" placeholder="Mensaje" required>Resumen de compra: ${resumenCompra()}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirmar Compra</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('form-correo').onsubmit = enviarCorreo;
+}
+
+function resumenCompra() {
+  return cart.map(p => `${p.nombre} x${p.quantity}`).join(', ');
+}
+
+async function enviarCorreo(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    nombre: form.nombre.value,
+    email: form.email.value,
+    direccion: form.direccion.value,
+    mensaje: form.mensaje.value
+  };
+
+  try {
+    const res = await fetch('http://localhost:3000/api/enviar-correo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    document.getElementById('mensaje-correo').innerHTML = `<div class="alert alert-success">${result.mensaje}</div>`;
+
+    // Manipular el stock a través de la API para cada producto del carrito
+    for (const item of cart) {
+      const producto = catalogo.find(p => p.id === item.id);
+      if (producto) {
+        const nuevoStock = producto.stock - item.quantity;
+        await fetch(`http://localhost:3000/api/productos/${item.id}/stock`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ stock: nuevoStock })
+        });
+        producto.stock = nuevoStock; // Actualiza el stock local
+      }
+    }
+    alert("Compra confirmada y correo enviado correctamente.");
+    form.reset();
+    cart = [];
+    renderCart();
+    renderProducts(catalogo); // Refresca el catálogo para mostrar el nuevo stock
+  } catch (err) {
+    document.getElementById('mensaje-correo').innerHTML = `<div class="alert alert-danger">Error al enviar correo.</div>`;
+  }
 }
 

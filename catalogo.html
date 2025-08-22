@@ -94,33 +94,9 @@
         </div>
 
     </div>
-    <!-- Formulario de despacho -->
-    <div class="container my-5">
-        <h2>Datos para el despacho</h2>
-        <form id="formCompra">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <input class="form-control" type="text" id="nombre" placeholder="Nombre quien recibe" required />
-                </div>
-                <div class="col-md-6">
-                    <input class="form-control" type="text" id="direccion" placeholder="Dirección" required />
-                </div>
-                <div class="col-md-4">
-                    <input class="form-control" type="text" id="comuna" placeholder="Comuna" required />
-                </div>
-                <div class="col-md-4">
-                    <input class="form-control" type="text" id="region" placeholder="Región" required />
-                </div>
-                <div class="col-md-4">
-                    <input class="form-control" type="email" id="correo" placeholder="Correo electrónico" required />
-                </div>
-                <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary">Confirmar Compra</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
+    <!-- Formulario despacho-->
+    <div class="container my-5" id="formulario-correo-container"></div>
+    <div class="container my-5" id="mensaje-correo"></div>
     <!-- Boleta -->
     <div class="container my-5" id="boleta" style="display: none;">
         <h2>Boleta Electrónica</h2>
