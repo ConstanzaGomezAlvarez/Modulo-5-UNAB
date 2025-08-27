@@ -1,4 +1,4 @@
-# ABPRO3
+# ABPRO4
 
 ## Tecnologías utilizadas
 
@@ -22,11 +22,19 @@ Este proyecto está desarrollado con los siguientes lenguajes y tecnologías:
 
 ## Descripción
 
-Este proyecto es una aplicación web que muestra un catálogo de productos, permitiendo a los usuarios explorar diferentes artículos de manera visual y sencilla. Incluye una página principal y una página de catálogo, ambas con estilos modernos y adaptables.
+En este proyecto utilizamos ambas formas de realizar peticiones HTTP: fetch() y XHR(XMLHttpRequest) 
+La principal diferencia entre XMLHttpRequest (XHR) y fetch() radica en su enfoque y facilidad de uso. 
+XHR es más antiguo, con una sintaxis verbosa y basada en callbacks, lo que puede complicar el manejo de errores
+y la lectura del código. En cambio, fetch() utiliza promesas, lo que permite escribir código más limpio y moderno, 
+especialmente con async/await. Aunque ambos métodos permiten realizar peticiones HTTP, fetch() ofrece una 
+experiencia más intuitiva y eficiente para desarrolladores actuales, mientras que XHR puede ser útil en casos
+específicos como el seguimiento de progreso o compatibilidad con navegadores antiguos. En términos de rendimiento,
+no hay diferencias significativas, pero fetch() facilita el desarrollo y mantenimiento de aplicaciones web modernas.
+
 
 ## Estructura
 
-Modulo-5-UNAB-M5AE1-ABPRO2/
+Modulo-5-UNAB-M5-ABPRO4/
 -├─ README.md
 -├─ index.html
 -├─ catalogo.html
@@ -53,9 +61,9 @@ Modulo-5-UNAB-M5AE1-ABPRO2/
 
 1. Clona el repositorio:
 	```bash
-	git clone https://github.com/ConstanzaGomezAlvarez/Modulo-5-UNAB/tree/M5AE1-ABPRO2
+	git clone https://github.com/ConstanzaGomezAlvarez/Modulo-5-UNAB/tree/M5-ABPRO4
 	```
-2. Abre la carpeta `M5AE1-ABPRO2`.
+2. Abre la carpeta `M5-ABPRO4`.
 3. Abre `index.html` en tu navegador.
 
 ## Contribuidores
