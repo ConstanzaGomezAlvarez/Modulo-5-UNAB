@@ -26,18 +26,28 @@ const cartItems = document.getElementById('cart-items');
 const cartSummary = document.getElementById('cart-summary');
 
 // ==================== Cargar productos ====================
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const res = await fetch('http://localhost:3000/api/productos');
-    const data = await res.json();
-    console.log("Productos cargados:", data);
-    catalogo = data.map(p => new Producto(p));
-    renderFilters();
-    renderProducts(catalogo);
-    renderCart();
-  } catch (e) {
-    console.error("Error cargando productos:", e);
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://localhost:3000/api/productos');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        try {
+          const data = JSON.parse(xhr.responseText);
+          console.log("Productos cargados:", data);
+          catalogo = data.map(p => new Producto(p));
+          renderFilters();
+          renderProducts(catalogo);
+          renderCart();
+        } catch (e) {
+          console.error("Error procesando productos:", e);
+        }
+      } else {
+        console.error("Error cargando productos:", xhr.statusText);
+      }
+    }
+  };
+  xhr.send();
 });
 
 // ==================== Filtros ====================
