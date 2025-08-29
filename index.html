@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tu CSS propio -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-light">
+
+    <div class="container py-5">
+
+        <!-- Mensajes de error -->
+        <span id="error-message" class="text-center text-danger d-block mb-3"></span>
+
+        <!-- LOGIN -->
+        <section id="login" class="card shadow p-4 mb-5">
+            <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-control" placeholder="Username">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" class="form-control" placeholder="Password">
+            </div>
+
+            <div class="d-grid gap-2">
+                <button id="btn-login" type="button" class="btn btn-primary">Login</button>
+                <button id="btn-register" type="button" class="btn btn-outline-secondary">Register</button>
+            </div>
+        </section>
+
+        <!-- APP -->
+        <section id="app" class="hidden">
+            <div class="card shadow p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span id="user-info" class="fw-bold"></span>
+                    <button id="btn-logout" type="button" class="btn btn-danger btn-sm">Logout</button>
+                </div>
+
+                <h4 class="mb-3">Nueva tarea</h4>
+                <div class="input-group mb-4">
+                    <input type="text" id="new-task" class="form-control" placeholder="Nueva tarea">
+                    <button id="btn-add" type="button" class="btn btn-success">Agregar</button>
+                </div>
+
+                <h4 class="mb-3">Lista de tareas</h4>
+                <div id="task" class="list-group"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS (con Popper incluido) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tu JS -->
+    <script type="module" src="assets/js/index.js"></script>
+</body>
+
+</html>
