@@ -27,3 +27,12 @@ Aplicación web simple que permite a los usuarios **registrarse, iniciar sesión
 - Listar tareas en tiempo real (solo las del usuario actual).
 - Eliminar tareas individuales.
 - Persistencia en Firestore con reglas de seguridad recomendadas.
+
+  ## Estructura del proyecto
+  📦Modulo 5 UNAB EvFinalM5
+├── index.html                # Página principal de la aplicación
+└── assets/                   # Recursos estáticos
+    ├── css/                  # Estilos
+    │   └── style.css         # Hoja de estilos principal
+    └── js/                   # Lógica de la aplicación
+        └── index.js          # Script principal con la lógica de Firebase y tareas
