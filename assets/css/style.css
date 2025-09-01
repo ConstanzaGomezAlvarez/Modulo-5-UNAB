@@ -1,3 +1,14 @@
 .hidden {
-    display: none;
+  display: none !important;
+}
+
+.list-group-item span {
+  cursor: pointer;
+}
+#saludo {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+
+  color: #333;
+  text-align: center;
 }
