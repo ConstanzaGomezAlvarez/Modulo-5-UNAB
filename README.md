@@ -30,9 +30,9 @@ Aplicación web simple que permite a los usuarios **registrarse, iniciar sesión
 
   ## Estructura del proyecto
   📦Modulo 5 UNAB EvFinalM5
-├── index.html                # Página principal de la aplicación
-└── assets/                   # Recursos estáticos
-    ├── css/                  # Estilos
-    │   └── style.css         # Hoja de estilos principal
-    └── js/                   # Lógica de la aplicación
-        └── index.js          # Script principal con la lógica de Firebase y tareas
+├── index.html                
+└── assets/                  
+    ├── css/                 
+    │   └── style.css        
+    └── js/                   
+        └── index.js         
