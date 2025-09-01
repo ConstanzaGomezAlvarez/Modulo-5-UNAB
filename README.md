@@ -28,8 +28,9 @@ Aplicación web simple que permite a los usuarios **registrarse, iniciar sesión
 - Eliminar tareas individuales.
 - Persistencia en Firestore con reglas de seguridad recomendadas.
 
-  ## Estructura del proyecto
-  📦Modulo 5 UNAB EvFinalM5
+## Estructura del proyecto
+Modulo 5 UNAB EvFinalM5
+  
 ├── index.html                
 └── assets/                  
     ├── css/                 
